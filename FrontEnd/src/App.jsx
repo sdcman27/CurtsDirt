@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import LoginForm from './components/LoginForm';
+import Home from './components/Home';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const Navigation = () => {
+  // Hook is now being used within the context of <Router>
+  const location = useLocation();
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header className="App-header">
+        <h1>Welcome to CurtsDirt</h1>
+        {location.pathname !== '/login' && (
+          <nav>
+            <Link to="/login" className="LoginButton">Login</Link> {/* Show only if not on login page */}
+          </nav>
+        )}
+        {location.pathname === '/login' && (
+          <nav>
+            <Link to="/" className="HomeButton">Home</Link> {/* Show on login page */}
+          </nav>
+        )}
+      </header>
     </>
-  )
-}
+  );
+};
 
-export default App
+const App = () => {
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<><Navigation /><Home /></>} />
+          <Route path="/login" element={<><Navigation /><LoginForm /></>} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
