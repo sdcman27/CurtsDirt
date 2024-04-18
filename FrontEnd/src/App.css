@@ -10,7 +10,7 @@
 }
 
 .side-panel {
-  width: 25%;
+  width: 20%;
   min-width: 200px;
   background-color: #f0f0f0;
   padding: 20px;
@@ -28,7 +28,12 @@
 
 .main-content {
   flex-grow: 1;
-  padding: 20px;
+  padding: 100px;
+  transition: margin-left 0.3s ease;
+}
+
+.content-shift {
+  margin-left: 200px; /* Adjust this value based on the side panel width */
 }
 
 .LoginButton, .HomeButton {

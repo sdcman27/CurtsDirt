@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AuthProvider } from './services/AuthContext';
 import LoginForm from './components/LoginForm';
@@ -28,12 +28,14 @@ const Navigation = () => {
 };
 
 const App = () => {
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+
   return (
     <Router>
       <AuthProvider>
         <div className="App">
-          <SidePanel />  {/* This will render the side panel */}
-          <div className="main-content">
+          <SidePanel isOpen={isSidePanelOpen} setIsOpen={setIsSidePanelOpen} />  {/* This will render the side panel */}
+          <div className={`main-content ${isSidePanelOpen ? 'content-shift' : ''}`}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<LoginForm />} />
@@ -48,3 +50,5 @@ const App = () => {
 };
 
 export default App;
+
+
