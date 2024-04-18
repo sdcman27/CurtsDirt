@@ -15,7 +15,7 @@ const LoginForm = () => {
       navigate('/'); // Navigate to the home page on successful login
     } catch (error) {
       // Use the error message from the server if it exists, otherwise a generic message
-      setErrorMessage(error?.response?.data?.message || 'An error occurred during login.');
+      setErrorMessage(error?.response?.data?.message || 'Whoops, An error occurred during login.');
     }
   }
 
