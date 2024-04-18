@@ -1,10 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { useAuth } from './services/AuthContext'; // Import useAuth
+import { AuthProvider } from './services/AuthContext';
 import LoginForm from './components/LoginForm';
 import Home from './components/Home';
+import LearnAboutTopsoil from './pages/LearnAboutTopsoil';
+import OrderNow from './pages/OrderNow';
 import './App.css';
-import { AuthProvider } from './services/AuthContext'; // Import AuthProvider
+import SidePanel from './components/SidePanel';
+
+
 
 const Navigation = () => {
   const { isAuthenticated, logout } = useAuth(); // Use the useAuth hook
@@ -25,16 +29,21 @@ const Navigation = () => {
 
 const App = () => {
   return (
-      <Router>
-          <AuthProvider> {/* Wrap components with AuthProvider */}
-              <div className="App">
-                  <Routes>
-                      <Route path="/" element={<><Navigation /><Home /></>} />
-                      <Route path="/login" element={<><Navigation /><LoginForm /></>} />
-                  </Routes>
-              </div>
-          </AuthProvider>
-      </Router>
+    <Router>
+      <AuthProvider>
+        <div className="App">
+          <SidePanel />  {/* This will render the side panel */}
+          <div className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/learn-about-topsoil" element={<LearnAboutTopsoil />} />
+              <Route path="/order-now" element={<OrderNow />} />
+            </Routes>
+          </div>
+        </div>
+      </AuthProvider>
+    </Router>
   );
 };
 

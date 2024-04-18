@@ -1,25 +1,37 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.App {
+  display: flex;
+  width: 100%;
+}
+
+.side-panel {
+  width: 25%;
+  min-width: 200px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.side-panel a {
+  margin: 10px 0;
+  color: #333;
+  text-decoration: none;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
 }
 
 .LoginButton, .HomeButton {
-  position: absolute;
-  top: 20px;
-  padding: 10px 20px;
-  background-color: #646cff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  margin-top: auto;  /* Moves login/logout to the bottom of the side panel */
 }
 
-.LoginButton {
-  right: 5%; /* Adjust this value based on your layout */
-}
-
-.HomeButton {
-  left: 5%;
-}
