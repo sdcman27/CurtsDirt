@@ -5,16 +5,21 @@
   text-align: center;
 }
 
-.LoginButton {
+.LoginButton, .HomeButton {
   position: absolute;
   top: 20px;
-  right: 20px;
-  /* Add more styling to make it look like a button */
+  padding: 10px 20px;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.LoginButton {
+  left: 5%; /* Adjust this value based on your layout */
 }
 
 .HomeButton {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  /* Add more styling to make it look like a button */
+  right: 5%;
 }
