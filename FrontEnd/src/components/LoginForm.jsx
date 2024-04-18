@@ -11,10 +11,16 @@ const LoginForm = () => {
   const handleLogin = async () => {
     try {
       const data = await loginUser(username, password);
-      console.log(data); // Do something with the token, like storing it
-      navigate('/'); // Navigate to the home page on successful login
+      // Store the token in localStorage or sessionStorage
+      localStorage.setItem('token', data.token);
+      console.log(data)
+
+      // Redirect user to the home page
+      navigate('/');
+
+      // Optionally, set the auth token for any future axios requests
+      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
     } catch (error) {
-      // Use the error message from the server if it exists, otherwise a generic message
       setErrorMessage(error?.response?.data?.message || 'Whoops, An error occurred during login.');
     }
   }

@@ -6,7 +6,7 @@ const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME, // Directly use the database name
+  database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
@@ -42,5 +42,13 @@ async function createDefaultUser() {
     console.log("Default user created");
   }
 }
+
+// Log to see if the pool is created successfully
+console.log('Database pool created with the following credentials', {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME, // Directly use the database name
+});
 
 module.exports = { pool, createDefaultUser }; // Export both pool and function

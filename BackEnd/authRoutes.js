@@ -5,10 +5,12 @@ const db = require('./database'); // Assuming this is now a MySQL pool
 
 const router = express.Router();
 
+const { pool } = require('./database'); // Make sure you destruct pool from the expor
+
 // Helper function to find a user by username
 async function findUserByUsername(username) {
   const query = 'SELECT * FROM users WHERE username = ?';
-  const [rows] = await db.promise().query(query, [username]);
+  const [rows] = await pool.query(query, [username]);
   return rows[0];
 }
 
@@ -51,8 +53,10 @@ router.post('/login', async (req, res) => {
     } catch (err) {
       // Log the error and send a 500 Internal Server Error response
       console.error(err);
-      res.status(500).json({ message: "An error occurred during login." });
+      res.status(500).json({ message: "Uh oh, An error occurred during login." });
     }
 });
+
+
 
 module.exports = router;

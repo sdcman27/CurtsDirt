@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
   res.json('From backend');
 });
 
+// In App.js, after setting up the routes
+console.log(app._router.stack.filter(r => r.route).map(r => r.route));
+
+
 const PORT = process.env.PORT || 5173;
 app.listen(PORT, async () => {
   console.log(`Server is listening on port ${PORT}`);
