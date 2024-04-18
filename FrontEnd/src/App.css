@@ -17,9 +17,9 @@
 }
 
 .LoginButton {
-  left: 5%; /* Adjust this value based on your layout */
+  right: 5%; /* Adjust this value based on your layout */
 }
 
 .HomeButton {
-  right: 5%;
+  left: 5%;
 }
