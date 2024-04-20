@@ -7,6 +7,8 @@ import LearnAboutTopsoil from './pages/LearnAboutTopsoil';
 import OrderNow from './pages/OrderNow';
 import './App.css';
 import SidePanel from './components/SidePanel';
+import TopsoilCalculator from './components/TopsoilCalculator';
+
 
 
 
@@ -40,6 +42,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<LoginForm />} />
               <Route path="/learn-about-topsoil" element={<LearnAboutTopsoil />} />
+              <Route path="/topsoil-calculator" element={<TopsoilCalculator />} />
               <Route path="/order-now" element={<OrderNow />} />
             </Routes>
           </div>

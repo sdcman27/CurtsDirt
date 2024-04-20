@@ -27,6 +27,7 @@ const SidePanel = ({ isOpen, setIsOpen }) => {
             <div className="links">
                 <Link to="/">Home</Link>
                 <Link to="/learn-about-topsoil">Learn about Topsoil</Link>
+                <Link to="/topsoil-calculator">Topsoil Calculator</Link>
                 <Link to="/order-now">Order Now</Link>
             </div>
             <div className="side-panel-footer">

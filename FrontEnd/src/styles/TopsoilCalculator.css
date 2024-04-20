@@ -1,0 +1,44 @@
+.topsoil-calculator {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.topsoil-calculator form {
+    display: flex;
+    flex-direction: column;
+}
+
+.topsoil-calculator label {
+    margin-bottom: 10px;
+}
+
+.topsoil-calculator input {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.topsoil-calculator button {
+    padding: 10px 15px;
+    margin-top: 15px;
+    background-color: #646cff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.topsoil-calculator button:hover {
+    background-color: #535bf2;
+}
+
+.result {
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+}

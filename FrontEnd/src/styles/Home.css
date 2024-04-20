@@ -1,0 +1,43 @@
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .home-header {
+    text-align: center;
+    margin-top: 0%;
+    margin-bottom: 30px;
+  }
+  
+  .carousel .slide {
+    background: none; /* Override default background */
+  }
+  
+  .carousel .carousel-status {
+    display: none; /* Hide the status counter, optional */
+  }
+  
+  .home-about {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .home-hours {
+    text-align: center;
+    padding: 0px;
+    margin-bottom: 30px;
+  }
+  
+  .hours-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .hours-list li {
+    margin-bottom: 10px;
+  }  
+  .p {
+    text-indent: 40px; /* Adjust the value to suit your design */
+  }
+  
