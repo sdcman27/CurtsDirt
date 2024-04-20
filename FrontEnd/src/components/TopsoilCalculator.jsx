@@ -45,7 +45,7 @@ const TopsoilCalculator = () => {
             {result && (
                 <div className="result">
                     <p>You need a total of {result.cubicFeet} cubic feet of topsoil, or</p>
-                    <p>{result.cubicYards} cubic yard of topsoil, or</p>
+                    <p>{result.cubicYards} cubic yard of topsoil</p>
                 </div>
             )}
         </div>
