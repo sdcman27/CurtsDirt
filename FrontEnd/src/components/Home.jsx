@@ -4,6 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import CurtsDirtLogo from '../assets/CurtsDirtLogo.jpg';
 import CurtsDirt2 from '../assets/CurtsDirt2.jpg';
 import CurtsDirt3 from '../assets/CurtsDirt3.jpg';
+import MapComponent from './MapComponent';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -55,6 +56,8 @@ const Home = () => {
             <li>Saturday & Sunday: 8 AM - 4 PM</li>
         </ul>
     </div>
+
+    <MapComponent />
 
     </div>
   );
