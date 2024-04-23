@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './SidePanel.css';
+import '../styles/SidePanel.css';
 import { useAuth } from '../services/AuthContext';
 
 const SidePanel = ({ isOpen, setIsOpen }) => {

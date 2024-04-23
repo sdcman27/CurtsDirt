@@ -7,7 +7,7 @@ import LearnAboutTopsoil from './pages/LearnAboutTopsoil';
 import OrderNow from './pages/OrderNow';
 import './App.css';
 import SidePanel from './components/SidePanel';
-import TopsoilCalculator from './components/TopsoilCalculator';
+import TopsoilCalculator from './pages/TopsoilCalculator';
 
 
 

@@ -1,0 +1,66 @@
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* More space between inputs */
+  max-width: 500px; /* Slightly larger form */
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.order-form input,
+.order-form .location-search-input {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px; /* Larger font size for better readability */
+}
+
+.order-form .location-search-input,
+.order-form .autocomplete-dropdown-container {
+  margin-top: 4px;
+}
+
+.order-form .autocomplete-dropdown-container {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  border-top: none;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  overflow: hidden;
+}
+
+.order-form .suggestion-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #000000;
+}
+
+.order-form .suggestion-item--active,
+.order-form .suggestion-item:hover {
+  background-color: #000000;
+}
+
+.order-form button {
+  padding: 12px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.order-form button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom:50px ;
+}
