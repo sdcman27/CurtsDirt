@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import PlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import '../styles/OrderNow.css';
-
 
 const OrderNow = () => {
   const [order, setOrder] = useState({
@@ -18,63 +14,36 @@ const OrderNow = () => {
     description: '',
   });
 
-  const [scriptLoaded, setScriptLoaded] = useState(false);
-
-  useEffect(() => {
-    const loadScript = () => {
-      if (window.google) {
-        setScriptLoaded(true);
-        return; // skip load if script already exists
-      }
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCvyDqsvVc5uBLEEgPFHH6V0l_NbJxp1AM&libraries=places`;
-      script.onload = () => setScriptLoaded(true);
-      document.body.appendChild(script);
-    };
-
-    loadScript();
-  }, []);
-
-  const searchOptions = {
-    location: new window.google.maps.LatLng(40.816546, -80.041521),
-    radius: 15000, // Set the radius in meters
-    types: ['address']
-  }
-
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
-    console.log(latLng); // Optional: Log latitude and longitude if needed for other purposes
-  
-    // Initialize a template object for the order
+    console.log(latLng);
+
     const addressComponents = {
       street: '',
       city: '',
       state: '',
-      zipcode: ''
+      zipcode: '',
     };
-  
-    results[0].address_components.forEach(component => {
+
+    results[0].address_components.forEach((component) => {
       const types = component.types;
-      if (types.includes("street_number")) {
-        // Append the street number to the street address
+      if (types.includes('street_number')) {
         addressComponents.street = `${component.long_name} ${addressComponents.street}`;
-      } else if (types.includes("route")) {
-        // Append the street name to the street address
+      } else if (types.includes('route')) {
         addressComponents.street += component.long_name;
-      } else if (types.includes("locality")) {
+      } else if (types.includes('locality')) {
         addressComponents.city = component.long_name;
-      } else if (types.includes("administrative_area_level_1")) {
+      } else if (types.includes('administrative_area_level_1')) {
         addressComponents.state = component.short_name;
-      } else if (types.includes("postal_code")) {
+      } else if (types.includes('postal_code')) {
         addressComponents.zipcode = component.long_name;
       }
     });
 
-
-    setOrder(prevOrder => ({
+    setOrder((prevOrder) => ({
       ...prevOrder,
-      ...addressComponents
+      ...addressComponents,
     }));
   };
 
@@ -105,7 +74,7 @@ const OrderNow = () => {
       alert('There was an issue submitting your order, please try again.');
     }
   };
-
+  
   return (
     <div>
       <h1>Place Your Order</h1>
@@ -122,7 +91,6 @@ const OrderNow = () => {
           value={order.street}
           onChange={(value) => handleChange({ target: { name: 'street', value } })}
           onSelect={handleSelect}
-          searchOptions={searchOptions}
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div>
@@ -150,6 +118,7 @@ const OrderNow = () => {
             </div>
           )}
         </PlacesAutocomplete>
+
         <PlacesAutocomplete
           value={order.city}
           onChange={(value) => handleChange({ target: { name: 'city', value } })}

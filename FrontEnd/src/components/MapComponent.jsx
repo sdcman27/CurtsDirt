@@ -14,6 +14,9 @@ const MapComponent = () => {
         map: map,
         title: 'Curts Dirt'
       });
+      return (
+    <div id="map" style={{ height: '400px', width: '100%', margin: '0 auto' }}></div>
+  );
     };
 
     window.initMap = initMap;

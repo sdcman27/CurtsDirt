@@ -8,9 +8,11 @@ import OrderNow from './pages/OrderNow';
 import './App.css';
 import SidePanel from './components/SidePanel';
 import TopsoilCalculator from './pages/TopsoilCalculator';
+import Footer from './components/Footer'; // Import the Footer component
+import { LoadScript } from '@react-google-maps/api';
 
 
-
+const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const Navigation = () => {
   const { isAuthenticated, logout } = useAuth(); // Use the useAuth hook
@@ -35,6 +37,10 @@ const App = () => {
   return (
     <Router>
       <AuthProvider>
+      <LoadScript
+          googleMapsApiKey={apiKey} // Your API key
+          libraries={['places']}
+        >
         <div className="App">
           <SidePanel isOpen={isSidePanelOpen} setIsOpen={setIsSidePanelOpen} />  {/* This will render the side panel */}
           <div className={`main-content ${isSidePanelOpen ? 'content-shift' : ''}`}>
@@ -47,8 +53,11 @@ const App = () => {
             </Routes>
           </div>
         </div>
+        </LoadScript>
+        <Footer />
       </AuthProvider>
     </Router>
+    
   );
 };
 

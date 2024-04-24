@@ -57,7 +57,9 @@ const Home = () => {
         </ul>
     </div>
 
-    <MapComponent />
+    <div style={{ background: 'lightgray', padding: '10% 0', width: '100%' }}>
+        <MapComponent />
+      </div>
 
     </div>
   );

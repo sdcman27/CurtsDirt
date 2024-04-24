@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.3",
     "axios": "^1.6.8",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.9.13",

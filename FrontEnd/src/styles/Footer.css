@@ -1,0 +1,52 @@
+/* Footer.css */
+.footer {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap; /* Wrap items to next line on smaller screens */
+    justify-content: center; /* Center footer items */
+    gap: 40px; /* Add some space between the two sections */
+  }
+
+  .sitemap{
+    margin-top: 22px;
+  }
+  
+  .footer .sitemap,
+  .footer .links {
+    display: flex;
+    flex-direction: column; /* Stack the items vertically */
+    align-items: center; /* Center-align the items */
+  }
+  
+  .footer h3 {
+    margin: 10px 0;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer li + li {
+    margin-top: 10px; /* Add space between list items */
+  }
+  
+  .footer a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  @media (max-width: 768px) {
+    /* Adjustments for smaller screens */
+    .footer {
+      flex-direction: column;
+    }
+  
+    .footer .sitemap,
+    .footer .links {
+      margin: 10px 0; /* Add some vertical spacing on smaller screens */
+    }
+  }
