@@ -16,9 +16,6 @@ const OrderNow = () => {
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
-    const latLng = await getLatLng(results[0]);
-    console.log(latLng);
-
     const addressComponents = {
       street: '',
       city: '',
@@ -28,10 +25,8 @@ const OrderNow = () => {
 
     results[0].address_components.forEach((component) => {
       const types = component.types;
-      if (types.includes('street_number')) {
-        addressComponents.street = `${component.long_name} ${addressComponents.street}`;
-      } else if (types.includes('route')) {
-        addressComponents.street += component.long_name;
+      if (types.includes('street_number') || types.includes('route')) {
+        addressComponents.street = `${addressComponents.street} ${component.long_name}`.trim();
       } else if (types.includes('locality')) {
         addressComponents.city = component.long_name;
       } else if (types.includes('administrative_area_level_1')) {
@@ -119,64 +114,22 @@ const OrderNow = () => {
           )}
         </PlacesAutocomplete>
 
-        <PlacesAutocomplete
+        <input
+          type="text"
+          name="city"
           value={order.city}
-          onChange={(value) => handleChange({ target: { name: 'city', value } })}
-          onSelect={(value) => handleSelect(value, 'city')}
-          >
-            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-              <div>
-              <input
-                {...getInputProps({
-                    placeholder: 'Enter City',
-                    className: 'location-search-input',
-                })}
-              />
-              <div className="autocomplete-dropdown-container">
-                    {loading && <div>Loading...</div>}
-                    {suggestions.map(suggestion => {
-                      const className = suggestion.active
-                        ? 'suggestion-item--active'
-                        : 'suggestion-item';
-          return (
-            <div {...getSuggestionItemProps(suggestion, { className })}>
-              <span>{suggestion.description}</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  )}
-</PlacesAutocomplete>
-<PlacesAutocomplete
-  value={order.state}
-  onChange={(value) => handleChange({ target: { name: 'state', value } })}
-  onSelect={(value) => handleSelect(value, 'state')}
->
-  {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-    <div>
-      <input
-        {...getInputProps({
-          placeholder: 'Enter State',
-          className: 'location-search-input',
-        })}
-      />
-      <div className="autocomplete-dropdown-container">
-        {loading && <div>Loading...</div>}
-        {suggestions.map(suggestion => {
-          const className = suggestion.active
-            ? 'suggestion-item--active'
-            : 'suggestion-item';
-          return (
-            <div {...getSuggestionItemProps(suggestion, { className })}>
-              <span>{suggestion.description}</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  )}
-</PlacesAutocomplete>
+          onChange={handleChange}
+          placeholder="City"
+          readOnly
+        />
+        <input
+          type="text"
+          name="state"
+          value={order.state}
+          onChange={handleChange}
+          placeholder="State"
+          readOnly
+        />
         <input
           type="text"
           name="zipcode"
@@ -185,7 +138,13 @@ const OrderNow = () => {
           placeholder="Postal Code"
           required
         />
-
+        <input
+          type="text"
+          name="phone"
+          value={order.phone}
+          onChange={handleChange}
+          placeholder="Phone Number"
+        />
         <input
           type="text"
           name="description"
