@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import '../styles/OrderNow.css';
@@ -13,6 +13,32 @@ const OrderNow = () => {
     phone: '',
     description: '',
   });
+
+  const [autocompleteOptions, setAutocompleteOptions] = useState(null);
+
+
+  useEffect(() => {
+    const calculateBounds = async () => {
+      const radiusMiles = 20;
+      const earthRadiusMiles = 3958.8; // Radius of the Earth in miles
+      const lat = 40.816370;
+      const lng = -80.041215;
+
+      const latDelta = (radiusMiles / earthRadiusMiles) * (180 / Math.PI);
+      const lngDelta = (radiusMiles / earthRadiusMiles) * (180 / Math.PI) / Math.cos(lat * Math.PI / 180);
+
+      const bounds = {
+        north: lat + latDelta,
+        south: lat - latDelta,
+        east: lng + lngDelta,
+        west: lng - lngDelta,
+      };
+
+      setAutocompleteOptions({ bounds });
+    };
+
+    calculateBounds();
+  }, []);
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
@@ -80,12 +106,14 @@ const OrderNow = () => {
           value={order.name}
           onChange={handleChange}
           placeholder="Name"
+          autoComplete="name"
           required
         />
         <PlacesAutocomplete
           value={order.street}
           onChange={(value) => handleChange({ target: { name: 'street', value } })}
           onSelect={handleSelect}
+          autocompleteOptions={autocompleteOptions}
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div>
@@ -98,11 +126,10 @@ const OrderNow = () => {
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
                 {suggestions.map((suggestion, index) => {
-                  const className = suggestion.active
-                    ? 'suggestion-item--active'
-                    : 'suggestion-item';
-                  return (
-                    <div {...getSuggestionItemProps(suggestion, { 
+                  const key = `${suggestion.placeId || index}`; // Use placeId combined with index for a more unique key
+                  const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
+        return (
+          <div {...getSuggestionItemProps(suggestion, { 
                                                       className,
                                                       key: index})}>
                       <span>{suggestion.description}</span>
@@ -120,7 +147,7 @@ const OrderNow = () => {
           value={order.city}
           onChange={handleChange}
           placeholder="City"
-          readOnly
+          required
         />
         <input
           type="text"
@@ -128,7 +155,7 @@ const OrderNow = () => {
           value={order.state}
           onChange={handleChange}
           placeholder="State"
-          readOnly
+          required
         />
         <input
           type="text"
@@ -144,6 +171,7 @@ const OrderNow = () => {
           value={order.phone}
           onChange={handleChange}
           placeholder="Phone Number"
+          autoComplete="tel"
         />
         <input
           type="text"

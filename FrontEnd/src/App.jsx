@@ -38,7 +38,7 @@ const App = () => {
     <Router>
       <AuthProvider>
       <LoadScript
-          googleMapsApiKey={apiKey} // Your API key
+          googleMapsApiKey={apiKey} 
           libraries={['places']}
         >
         <div className="App">
