@@ -3,7 +3,10 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import CurtsDirtLogo from '../assets/CurtsDirtLogo.jpg';
 import CurtsDirt2 from '../assets/CurtsDirt2.jpg';
-import CurtsDirt3 from '../assets/CurtsDirt3.jpg';
+import CurtsDirt3 from '../assets/CurtsDirt3.jpg'
+import EscavatorShakerBucket from '../assets/EscavatorShakerBucket.jpg'
+import EscavatorShaker from '../assets/EscavatorShaker.jpg'
+import ShakenTopsoil from '../assets/ShakenTopsoil.jpg';
 import MapComponent from './MapComponent';
 import '../styles/Home.css';
 
@@ -20,12 +23,24 @@ const Home = () => {
     <p className="legend">Image 1</p>
   </div>
   <div>
+    <img src={EscavatorShakerBucket} alt="EscavatorShakerBucket" />
+    <p className="legend">EscavatorShakerBucket</p>
+  </div>
+  <div>
     <img src={CurtsDirt2} alt="CurtsDirt2" />
     <p className="legend">Image 2</p>
   </div>
   <div>
+    <img src={EscavatorShaker} alt="EscavatorShaker" />
+    <p className="legend">EscavatorShaker</p>
+  </div>
+  <div>
     <img src={CurtsDirt3} alt="CurtsDirt3" />
     <p className="legend">Image 3</p>
+  </div>
+  <div>
+    <img src={ShakenTopsoil} alt="ShakenTopsoil" />
+    <p className="legend">ShakenTopsoil</p>
   </div>
       </Carousel>
 
