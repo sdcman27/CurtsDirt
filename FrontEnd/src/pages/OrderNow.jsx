@@ -1,9 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import axios from 'axios';
 import PlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
+import { useLoadScript } from '@react-google-maps/api';
 import '../styles/OrderNow.css';
 
+const libraries = ['places'];
+
 const OrderNow = () => {
+  const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey,
+    libraries,
+  });
+
   const [order, setOrder] = useState({
     name: '',
     street: '',
@@ -14,34 +23,27 @@ const OrderNow = () => {
     description: '',
   });
 
-  const [autocompleteOptions, setAutocompleteOptions] = useState(null);
+    // useMemo is called unconditionally at the top level
+    const searchOptions = useMemo(() => ({
+      location: new window.google.maps.LatLng(40.816213, -80.041339),
+      radius: 48000, // 48 kilometers
+      componentRestrictions: { country: 'us' }
+    }), []);
 
+    
+  if (loadError) {
+    return <div>Error loading Google Maps API. Please try again later.</div>;
+  }
 
-  useEffect(() => {
-    const calculateBounds = async () => {
-      const radiusMiles = 20;
-      const earthRadiusMiles = 3958.8; // Radius of the Earth in miles
-      const lat = 40.816370;
-      const lng = -80.041215;
-
-      const latDelta = (radiusMiles / earthRadiusMiles) * (180 / Math.PI);
-      const lngDelta = (radiusMiles / earthRadiusMiles) * (180 / Math.PI) / Math.cos(lat * Math.PI / 180);
-
-      const bounds = {
-        north: lat + latDelta,
-        south: lat - latDelta,
-        east: lng + lngDelta,
-        west: lng - lngDelta,
-      };
-
-      setAutocompleteOptions({ bounds });
-    };
-
-    calculateBounds();
-  }, []);
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
+    const latLng = await getLatLng(results[0]);
+    console.log(latLng);
+
     const addressComponents = {
       street: '',
       city: '',
@@ -51,8 +53,10 @@ const OrderNow = () => {
 
     results[0].address_components.forEach((component) => {
       const types = component.types;
-      if (types.includes('street_number') || types.includes('route')) {
-        addressComponents.street = `${addressComponents.street} ${component.long_name}`.trim();
+      if (types.includes('street_number')) {
+        addressComponents.street = `${component.long_name} ${addressComponents.street}`;
+      } else if (types.includes('route')) {
+        addressComponents.street += component.long_name;
       } else if (types.includes('locality')) {
         addressComponents.city = component.long_name;
       } else if (types.includes('administrative_area_level_1')) {
@@ -95,7 +99,8 @@ const OrderNow = () => {
       alert('There was an issue submitting your order, please try again.');
     }
   };
-  
+
+
   return (
     <div>
       <h1>Place Your Order</h1>
@@ -113,7 +118,7 @@ const OrderNow = () => {
           value={order.street}
           onChange={(value) => handleChange({ target: { name: 'street', value } })}
           onSelect={handleSelect}
-          autocompleteOptions={autocompleteOptions}
+          searchOptions={searchOptions}
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div>

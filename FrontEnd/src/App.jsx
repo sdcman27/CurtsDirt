@@ -32,7 +32,7 @@ const Navigation = () => {
 };
 
 const App = () => {
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState(true);
 
   return (
     <Router>
@@ -42,7 +42,7 @@ const App = () => {
           libraries={['places']}
         >
         <div className="App">
-          <SidePanel isOpen={isSidePanelOpen} setIsOpen={setIsSidePanelOpen} />  {/* This will render the side panel */}
+          <SidePanel isOpen={isSidePanelOpen} setIsOpen={setIsSidePanelOpen} />  
           <div className={`main-content ${isSidePanelOpen ? 'content-shift' : ''}`}>
             <Routes>
               <Route path="/" element={<Home />} />

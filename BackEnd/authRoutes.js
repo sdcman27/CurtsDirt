@@ -86,6 +86,13 @@ router.post("/submit-order", async (req, res) => {
       phone,
       description,
     ]);
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log("Error sending mail:", error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
     res.json({
       message: "Order submitted successfully",
       orderId: result.insertId,
