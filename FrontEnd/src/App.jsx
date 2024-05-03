@@ -5,6 +5,8 @@ import LoginForm from './components/LoginForm';
 import Home from './components/Home';
 import LearnAboutTopsoil from './pages/LearnAboutTopsoil';
 import OrderNow from './pages/OrderNow';
+import TermsOfService from './pages/ToS';
+import PrivacyPolicy from './pages/Privacy';
 import './App.css';
 import SidePanel from './components/SidePanel';
 import TopsoilCalculator from './pages/TopsoilCalculator';
@@ -50,6 +52,8 @@ const App = () => {
               <Route path="/learn-about-topsoil" element={<LearnAboutTopsoil />} />
               <Route path="/topsoil-calculator" element={<TopsoilCalculator />} />
               <Route path="/order-now" element={<OrderNow />} />
+              <Route path="/Tos" element={<TermsOfService />} />
+              <Route path="/Privacy" element={<PrivacyPolicy />} />
             </Routes>
           </div>
         </div>

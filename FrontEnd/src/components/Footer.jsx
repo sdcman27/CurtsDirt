@@ -8,8 +8,8 @@ const Footer = () => {
       <div className="sitemap">
         <h3>Policy:</h3>
         <ul>
-          <li><Link to="/terms">Terms & Service</Link></li>
-          <li><Link to="/privacy">Privacy Policy</Link></li>
+          <li><Link to="/ToS">Terms & Service</Link></li>
+          <li><Link to="/Privacy">Privacy Policy</Link></li>
         </ul>
       </div>
       <div className="links">
