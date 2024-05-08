@@ -14,16 +14,12 @@ npm install
 
 ## Usage
 
-To run the website locally after installation, execute in two different terminals:
+To run the website locally after installation:
 
 ```bash
-cd backend
 npm start
 ```
-```bash
-cd frontend
-npm run dev
-```
+
 
 Navigate to http://localhost:3001 in your web browser to view the site.
 
