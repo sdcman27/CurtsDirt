@@ -1,8 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const authRoutes = require('./authRoutes');
-const { initializePool } = require('./database');
-
+import express from 'express';
+import cors from 'cors';
+import authRoutes from './authRoutes.js';
+import { initializePool } from './database.js';
 
 const app = express();
 app.use(cors());
@@ -12,10 +11,9 @@ const PORT = process.env.PORT || 5173;
 
 async function startServer() {
   try {
-    const pool = await initializePool();
-    app.locals.pool = pool;  // Store the pool in the app locals for access in route handlers
+    await initializePool();
 
-    app.use('/api', require('./authRoutes'));
+    app.use('/api', authRoutes);
 
     app.get('/', (req, res) => {
       res.json({ message: 'From backend' });

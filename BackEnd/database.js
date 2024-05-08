@@ -1,7 +1,9 @@
-const mysql = require('mysql2/promise');
-const bcrypt = require('bcrypt');
-require('dotenv').config();
+import mysql from 'mysql2/promise';
+import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
 
+
+dotenv.config();
 // Define your basic MySQL connection configuration.
 // This configuration does not specify a specific database,
 // which is useful for initial connection to create the database if it does not exist.
@@ -15,10 +17,10 @@ const baseConfig = {
 };
 
 // Declare a variable to hold the pool globally so it can be accessed throughout the module.
-let pool;
+let pool= mysql.createPool({ ...baseConfig, database: process.env.DB_NAME });
 
 // This function initializes the database connection pool.
-async function initializePool() {
+export async function initializePool() {
   // Create a pool with base configuration to connect without specifying a database.
   const initialPool = mysql.createPool(baseConfig);
   
@@ -47,14 +49,13 @@ initializePool().catch(err => {
 async function ensureDatabaseExists(pool) {
   const dbName = process.env.DB_NAME;
   await pool.query(`CREATE DATABASE IF NOT EXISTS \`${dbName}\` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
-  console.log(`Database '${dbName}' ensured to exist.`);
 }
 
 // Function to create a default user in the 'users' table.
 // This is useful for having a default login for initial tests or setups.
 async function createDefaultUser(pool) {
   const username = 'triDstruC';
-  const defaultPassword = 'truc1973A$$';
+  const defaultPassword = '1234';
   const hashedPassword = await bcrypt.hash(defaultPassword, 10);
 
   // Create the 'users' table if it doesn't exist.
@@ -95,7 +96,6 @@ async function createOrdersTable(pool) {
 }
 
 // Export a getter function for accessing the initialized pool from other modules.
-module.exports = {
-  getPool: () => pool,
-  initializePool
-};
+export function getPool() {
+  return pool;
+}

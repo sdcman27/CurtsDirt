@@ -1,11 +1,13 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const { getPool } = require("./database"); // Make sure you destruct pool from the export
-require("dotenv").config();
-const nodemailer = require("nodemailer");
+import express from 'express';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { getPool } from './database.js'; // Make sure you destruct pool from the export
+import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
+import { google } from 'googleapis';
+
+dotenv.config();
 const router = express.Router();
-const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
 // Helper function to find a user by username
@@ -163,4 +165,4 @@ const mailOptions = {
   text: "Hello, this is a test email using OAuth2 and Nodemailer.",
 };
 
-module.exports = router;
+export default router;
