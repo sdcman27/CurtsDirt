@@ -29,6 +29,7 @@ const SidePanel = ({ isOpen, setIsOpen }) => {
                 <Link to="/learn-about-topsoil">Learn about Topsoil</Link>
                 <Link to="/topsoil-calculator">Topsoil Calculator</Link>
                 <Link to="/order-now">Order Now</Link>
+                <Link to="/Review">Leave a Review!</Link>
             </div>
             <div className="side-panel-footer">
                 {isAuthenticated ? (

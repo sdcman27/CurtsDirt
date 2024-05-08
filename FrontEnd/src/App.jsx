@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AuthProvider } from './services/AuthContext';
+import { LoadScript } from '@react-google-maps/api';
+import Review from './pages/Review';
 import LoginForm from './components/LoginForm';
 import Home from './components/Home';
 import LearnAboutTopsoil from './pages/LearnAboutTopsoil';
@@ -11,7 +13,6 @@ import './App.css';
 import SidePanel from './components/SidePanel';
 import TopsoilCalculator from './pages/TopsoilCalculator';
 import Footer from './components/Footer'; // Import the Footer component
-import { LoadScript } from '@react-google-maps/api';
 
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -54,6 +55,7 @@ const App = () => {
               <Route path="/order-now" element={<OrderNow />} />
               <Route path="/Tos" element={<TermsOfService />} />
               <Route path="/Privacy" element={<PrivacyPolicy />} />
+              <Route path="/Review" element={<Review />} />
             </Routes>
           </div>
         </div>
