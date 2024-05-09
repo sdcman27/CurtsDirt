@@ -1,14 +1,14 @@
 /* Footer.css */
 .footer {
-    background-color: #1f1f1f;
-    color: #ffffff;
-    padding: 20px 0;
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap; /* Wrap items to next line on smaller screens */
-    justify-content: center; /* Center footer items */
-    gap: 40px; /* Add some space between the two sections */
-  }
+  flex-shrink: 0; /* Prevent the footer from shrinking */
+  background-color: #1f1f1f;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Center footer items */
+  gap: 40px; /* Add some space between sections */
+}
 
   .sitemap{
     margin-top: 22px;
