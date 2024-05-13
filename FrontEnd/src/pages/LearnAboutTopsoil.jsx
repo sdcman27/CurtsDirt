@@ -25,7 +25,7 @@ const LearnAboutTopsoil = () => {
            Additionally, subsoil can help improve water drainage and mitigate erosion by providing a more stable base layer. 
            This makes it vital not just for agricultural productivity but also for maintaining natural landscapes and supporting diverse ecosystems.</p>
 
-        <Link to="/order-now" className="button">Submit Inquiry</Link><br></br>
+        <Link to="/order-now" className="button">Submit Inquiry</Link>
         <Link to="/topsoil-calculator" className="button">Topsoil Calculator</Link>
 
         <h2>Fill Topsoil</h2>
@@ -40,7 +40,7 @@ const LearnAboutTopsoil = () => {
           control by stabilizing the soil with plant roots. Due to these properties, topsoil is crucial for agriculture, 
           landscaping, and ecological restoration projects.</p>
         
-        <Link to="/order-now" className="button">Submit Inquiry</Link><br></br>
+        <Link to="/order-now" className="button">Submit Inquiry</Link>
         <Link to="/topsoil-calculator" className="button">Topsoil Calculator</Link>
 
         <h2>Shaken Topsoil</h2>
@@ -59,7 +59,7 @@ const LearnAboutTopsoil = () => {
           Overall, shaken topsoil that is rich in nitrogen is ideal for gardeners and landscapers seeking to optimize plant health and soil conditions 
           for both ornamental and edible plants.</p>
 
-        <Link to="/order-now" className="button">Submit Inquiry</Link><br></br>
+        <Link to="/order-now" className="button">Submit Inquiry</Link>
         <Link to="/topsoil-calculator" className="button">Topsoil Calculator</Link>
 
         <h2>Amended Soil</h2>
@@ -73,7 +73,7 @@ const LearnAboutTopsoil = () => {
           Ideal for both container gardening and in-ground use, this amended soil mix is perfect for gardeners looking to enhance plant health, 
           foster robust growth, and ensure the sustainability of their gardening efforts.</p>
 
-        <Link to="/order-now" className="button">Submit Inquiry</Link><br></br>
+        <Link to="/order-now" className="button">Submit Inquiry</Link>
         <Link to="/topsoil-calculator" className="button">Topsoil Calculator</Link>
 
         <h2>Medallion Shale</h2>
@@ -86,7 +86,7 @@ const LearnAboutTopsoil = () => {
           for creating defined paths, driveways, and decorative garden beds, where its natural color and texture enhance the landscape's 
           visual appeal while minimizing maintenance and cleanup.</p>
 
-        <Link to="/order-now" className="button">Submit Inquiry</Link><br></br>
+        <Link to="/order-now" className="button">Submit Inquiry</Link>
         <Link to="/topsoil-calculator" className="button">Topsoil Calculator</Link>
       </div>
     </div>

@@ -111,7 +111,6 @@ const OrderNow = () => {
           value={order.name}
           onChange={handleChange}
           placeholder="Name"
-          autoComplete="name"
           required
         />
         <PlacesAutocomplete
@@ -176,7 +175,6 @@ const OrderNow = () => {
           value={order.phone}
           onChange={handleChange}
           placeholder="Phone Number"
-          autoComplete="tel"
         />
         <input
           type="text"

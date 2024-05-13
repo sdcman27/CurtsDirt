@@ -19,7 +19,7 @@ const Footer = () => {
           <li><Link to="/learn-about-topsoil">Learn About Topsoil</Link></li>
           <li><Link to="/topsoil-calculator">Topsoil Calculator</Link></li>
           <li><Link to="/order-now">Order Now</Link></li>
-          <li><Link to="/Reviews">Leave a Review!</Link></li>
+          <li><Link to="/Review">Leave a Review!</Link></li>
         </ul>
       </div>
     </footer>
