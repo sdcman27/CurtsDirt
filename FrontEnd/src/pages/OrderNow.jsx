@@ -102,7 +102,7 @@ const OrderNow = () => {
 
 
   return (
-    <div>
+    <div className='container'>
       <h1>Place Your Order</h1>
       <form onSubmit={handleSubmit} className="order-form">
         <input
